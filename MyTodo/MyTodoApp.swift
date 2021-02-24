@@ -13,7 +13,8 @@ struct MyTodoApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            //ContentView()
+            AddCategorySheetView(categoryName: "", selectedIcon: icons[0], selectedColor: colors[0], valid: true)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
