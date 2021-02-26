@@ -9,17 +9,21 @@ import SwiftUI
 
 struct AddCategorySheetView: View {
     //MARK: -Properties
+    @Environment(\.managedObjectContext) var managedObjectContext
+    @Environment(\.presentationMode) var presentationMode
     @State var categoryName: String
     @State var selectedIcon: String
     @State var selectedColor: Color
     @State var valid: Bool = true
     
     //MARK: -Functions
-    func checkValid() {
+    func checkValid() -> Bool{
         if categoryName != "" {
             self.valid = true
+            return true
         } else {
             self.valid = false
+            return false
         }
     }
     //MARK: -Body
@@ -32,44 +36,60 @@ struct AddCategorySheetView: View {
                     .foregroundColor(Color("colorMDarkPrimary"))
                     .fontWeight(.heavy)
                 Spacer()
-                //MARK: -Category Title
-                HStack {
-                    Text("Nazwa kategorii")
-                        .font(.subheadline)
-                        .foregroundColor(Color("accentMColor"))
-                        .fontWeight(.light)
+                Group {
+                    //MARK: -Category Title
+                    HStack {
+                        Text("Nazwa kategorii")
+                            .font(.subheadline)
+                            .foregroundColor(Color("accentMColor"))
+                            .fontWeight(.light)
+                        Spacer()
+                    }
+                    TextFieldView(categoryName: $categoryName, valid: $valid)
+                    Spacer()
+                    //MARK: -Category Icon
+                    HStack {
+                        Text("Ikona")
+                            .font(.subheadline)
+                            .foregroundColor(Color("accentMColor"))
+                            .fontWeight(.light)
+                        Spacer()
+                    }
+                    IconPickerView(selectedIcon: $selectedIcon)
+                    Spacer()
+                    //MARK: -Category Color
+                    HStack {
+                        Text("Kolor")
+                            .font(.subheadline)
+                            .foregroundColor(Color("accentMColor"))
+                            .fontWeight(.light)
+                        Spacer()
+                    }
+                    ColorPickerView(selectedColor: $selectedColor)
                     Spacer()
                 }
-                TextFieldView(categoryName: $categoryName, valid: $valid)
-                Spacer()
-                //MARK: -Category Icon
-                HStack {
-                    Text("Ikona")
-                        .font(.subheadline)
-                        .foregroundColor(Color("accentMColor"))
-                        .fontWeight(.light)
-                    Spacer()
-                }
-                IconPickerView(selectedIcon: $selectedIcon)
-                Spacer()
-                //MARK: -Category Color
-                HStack {
-                    Text("Kolor")
-                        .font(.subheadline)
-                        .foregroundColor(Color("accentMColor"))
-                        .fontWeight(.light)
-                    Spacer()
-                }
-                ColorPickerView(selectedColor: $selectedColor)
                 //MARK: -Button
-//                Button(action: {
-//                    checkValid()
+                Button(action: {
+                    if checkValid() {
+                        let cat = Category_entity(context: self.managedObjectContext)
+                        cat.cat_name = self.categoryName
+                        cat.icon = self.selectedIcon
+                        cat.color = UIColor(self.selectedColor)
+                        self.presentationMode.wrappedValue.dismiss()
+                        do {
+                            try self.managedObjectContext.save()
+                        } catch {
+                            print(error)
+                        }
+
+                    }
+                                        
 //                    print(selectedIcon)
-//                    print(selectedColor)
+//                    print(selectedColor.hashValue)
 //                    print(categoryName)
-//                }, label: {
-//                    Text("Dodaj kategorię")
-//                })
+                }, label: {
+                    Text("Dodaj kategorię")
+                })
             }//:VStack
             .padding(10)
         })
