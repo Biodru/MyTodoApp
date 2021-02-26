@@ -16,6 +16,8 @@
 		5A55278B25E80C18000D6AA5 /* Category_entity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A55278925E80C18000D6AA5 /* Category_entity+CoreDataClass.swift */; };
 		5A55278C25E80C18000D6AA5 /* Category_entity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A55278A25E80C18000D6AA5 /* Category_entity+CoreDataProperties.swift */; };
 		5A55279225E8110B000D6AA5 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A55279125E8110B000D6AA5 /* CategoryView.swift */; };
+		5A6A7A7625E8F9B0006F2369 /* AddTodoSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A7A7525E8F9B0006F2369 /* AddTodoSheetView.swift */; };
+		5A6A7A7925E915F5006F2369 /* SheetViewEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A7A7825E915F5006F2369 /* SheetViewEnum.swift */; };
 		5A823CFF25E66999008593AD /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A823CFE25E66999008593AD /* Category.swift */; };
 		5A823D0325E66B8B008593AD /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A823D0225E66B8B008593AD /* ColorPickerView.swift */; };
 		5A823D0625E66B9E008593AD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A823D0525E66B9E008593AD /* Constants.swift */; };
@@ -36,6 +38,8 @@
 		5A55278925E80C18000D6AA5 /* Category_entity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Category_entity+CoreDataClass.swift"; path = "MyTodo/Category_entity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5A55278A25E80C18000D6AA5 /* Category_entity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Category_entity+CoreDataProperties.swift"; path = "MyTodo/Category_entity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5A55279125E8110B000D6AA5 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		5A6A7A7525E8F9B0006F2369 /* AddTodoSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoSheetView.swift; sourceTree = "<group>"; };
+		5A6A7A7825E915F5006F2369 /* SheetViewEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewEnum.swift; sourceTree = "<group>"; };
 		5A823CFE25E66999008593AD /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		5A823D0225E66B8B008593AD /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		5A823D0525E66B9E008593AD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -106,9 +110,18 @@
 			path = MainScrren;
 			sourceTree = "<group>";
 		};
+		5A6A7A7425E8F996006F2369 /* TodoSheet */ = {
+			isa = PBXGroup;
+			children = (
+				5A6A7A7525E8F9B0006F2369 /* AddTodoSheetView.swift */,
+			);
+			path = TodoSheet;
+			sourceTree = "<group>";
+		};
 		5A823CFB25E66967008593AD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5A6A7A7425E8F996006F2369 /* TodoSheet */,
 				5A55279025E810ED000D6AA5 /* MainScrren */,
 				5A823D0825E67160008593AD /* CategorySheet */,
 				5A4E2CCA25E59BBE00BF44F9 /* ContentView.swift */,
@@ -135,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				5A823D0525E66B9E008593AD /* Constants.swift */,
+				5A6A7A7825E915F5006F2369 /* SheetViewEnum.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -220,9 +234,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A55278C25E80C18000D6AA5 /* Category_entity+CoreDataProperties.swift in Sources */,
+				5A6A7A7925E915F5006F2369 /* SheetViewEnum.swift in Sources */,
 				5A4E2CD225E59BBF00BF44F9 /* Persistence.swift in Sources */,
 				5A55278B25E80C18000D6AA5 /* Category_entity+CoreDataClass.swift in Sources */,
 				5A823D0A25E6717F008593AD /* IconPickerView.swift in Sources */,
+				5A6A7A7625E8F9B0006F2369 /* AddTodoSheetView.swift in Sources */,
 				5A823CFF25E66999008593AD /* Category.swift in Sources */,
 				5A55279225E8110B000D6AA5 /* CategoryView.swift in Sources */,
 				5A823D0325E66B8B008593AD /* ColorPickerView.swift in Sources */,

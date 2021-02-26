@@ -11,10 +11,11 @@ struct TextFieldView: View {
     //MARK: -Properties
     @Binding var categoryName: String
     @Binding var valid: Bool
+    var hintText: String
     
     //MARK: -Body
     var body: some View {
-        TextField("Podaj nazwę kategorii", text: $categoryName)
+        TextField(hintText, text: $categoryName)
             .padding(10)
             .font(.largeTitle)
             .foregroundColor(Color("colorMDarkPrimary"))
@@ -27,7 +28,7 @@ struct TextFieldView: View {
 //MARK: -Preview
 struct TextFieldView_Previews: PreviewProvider {
     static var previews: some View {
-        TextFieldView(categoryName: .constant(""), valid: .constant(true))
+        TextFieldView(categoryName: .constant(""), valid: .constant(true), hintText: "Podaj nazwę kategorii")
             .previewLayout(.sizeThatFits)
             .background(Color("backgroundMColor"))
     }

@@ -11,13 +11,14 @@
     </entity>
     <entity name="Todo" representedClassName="Todo" syncable="YES" codeGenerationType="class">
         <attribute name="category" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="done" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="name" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
     <elements>
         <element name="Category_entity" positionX="-54" positionY="27" width="128" height="89"/>
         <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
-        <element name="Todo" positionX="-63" positionY="-9" width="128" height="89"/>
+        <element name="Todo" positionX="-63" positionY="-9" width="128" height="104"/>
     </elements>
 </model>

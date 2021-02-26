@@ -45,7 +45,7 @@ struct AddCategorySheetView: View {
                             .fontWeight(.light)
                         Spacer()
                     }
-                    TextFieldView(categoryName: $categoryName, valid: $valid)
+                    TextFieldView(categoryName: $categoryName, valid: $valid,hintText: "Podaj nazwę kategorii")
                     Spacer()
                     //MARK: -Category Icon
                     HStack {

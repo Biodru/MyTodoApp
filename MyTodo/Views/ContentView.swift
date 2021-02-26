@@ -10,7 +10,7 @@ import CoreData
 
 struct ContentView: View {
     //MARK: - Properites
-    @State var isPresesnted: Bool = false
+    @State var activeSheet: ActiveSheet?
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(entity: Category_entity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Category_entity.cat_name, ascending: true)]) var categories: FetchedResults<Category_entity>
     
@@ -26,7 +26,7 @@ struct ContentView: View {
                 ScrollView(.horizontal, showsIndicators: false, content: {
                     LazyHGrid(rows: gridLayoutCategory, alignment: .center, spacing: columnSpacing, content: {
                         Section(footer: Button(action: {
-                            self.isPresesnted.toggle()
+                            activeSheet = .category
                         }, label: {
                             Image(systemName: "plus.circle")
                                 .foregroundColor(Color("colorMDarkPrimary"))
@@ -47,11 +47,37 @@ struct ContentView: View {
                 //MARK: - Today
           }//:VStack
             .padding(10)
-            .sheet(isPresented: $isPresesnted) {
-                AddCategorySheetView(categoryName: "", selectedIcon: icons[0], selectedColor: colors[0], valid: true)
-                    .environment(\.managedObjectContext, self.managedObjectContext)
-        }
+            .sheet(item: $activeSheet, onDismiss: {
+                self.activeSheet = nil
+            }) { item in
+                switch item {
+                case .todo:
+                    AddTodoSheetView(valid: true, todoName: "Zrobić", done: false, category: "Dodaj zadanie")
+                        .environment(\.managedObjectContext, self.managedObjectContext)
+                case .category:
+                    AddCategorySheetView(categoryName: "", selectedIcon: icons[0], selectedColor: colors[0], valid: true)
+                        .environment(\.managedObjectContext, self.managedObjectContext)
+                }
+                
+        }//:AddCategory
+            
         }//:ScrollVertical
+        .overlay(ZStack {
+            Button(action: {
+                activeSheet = .todo
+                    }, label: {
+                Image(systemName: "plus.circle.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundColor(Color("colorMDarkPrimary"))
+                    .background(Circle().fill(Color("colorMLightPrimary")))
+                    .frame(width: 50, height: 50, alignment: .center)
+            })
+        }//:ZStack
+        .padding(.bottom, 10)
+        .padding(.trailing, 10)
+        , alignment: .bottomTrailing
+        )//:OverLayButton
     }
   
     //MARK: - Preview
