@@ -17,13 +17,13 @@ struct AddTodoSheetView: View {
     @State var valid: Bool
     @State var todoName: String
     @State var done: Bool
-    @State var category: String
+    @State var categoryNames: [String]
+    @State var selectedCategory: String = ""
     
     @Environment(\.presentationMode) var presentationMode
     
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(entity: Category_entity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Category_entity.cat_name, ascending: true)]) var categories: FetchedResults<Category_entity>
-    @State var selectedCategory: String = ""
     
     //MARK: - Body
     var body: some View {
@@ -66,8 +66,8 @@ struct AddTodoSheetView: View {
                     SectionHeaderView(name: "Kategoria?")
                     if self.showCategoryPicker {
                         Picker("Wybierz kategorię", selection: $selectedCategory) {
-                            ForEach(categories, id: \.self) {category in
-                                Text(category.cat_name ?? "Brak")
+                            ForEach(categoryNames, id: \.self) {category in
+                                Text(category ?? "Brak")
                             }
                         }//:Picker
                         .foregroundColor(Color("colorMDarkPrimary"))
@@ -88,7 +88,7 @@ struct AddTodoSheetView: View {
                     Button(action: {
                         self.showCategoryPicker.toggle()
                     }, label: {
-                        Text(self.showCalendar ? "Usuń kategorie" : "Dodaj kategorie")
+                        Text(self.showCategoryPicker ? "Usuń kategorie" : "Dodaj kategorie")
                     })//:CatButton
                     Spacer()
                 }//:Group
@@ -100,7 +100,7 @@ struct AddTodoSheetView: View {
                             newTodo.date = self.selectedDate
                         }
                         if showCategoryPicker {
-                            newTodo.category = self.selectedCategory
+                            newTodo.category = self.selectedCategory ?? ""
                         }
                         newTodo.name = self.todoName
                         newTodo.done = false
@@ -125,6 +125,11 @@ struct AddTodoSheetView: View {
             }//:VStack
             .padding(10)
         })
+        .onAppear(perform: {
+            for category in categories {
+                categoryNames.append(category.cat_name ?? "Brak")
+            }
+        })
         .padding(10)
         //.edgesIgnoringSafeArea(.all)
         .background(Color("backgroundMColor"))
@@ -134,7 +139,7 @@ struct AddTodoSheetView: View {
 //MARK: - Preview
 struct AddTodoSheetView_Previews: PreviewProvider {
     static var previews: some View {
-        AddTodoSheetView(valid: true, todoName: "Zrobić", done: false, category: "Dodaj zadanie")
+        AddTodoSheetView(valid: true, todoName: "Zrobić", done: false, categoryNames: [])
     }
 }
 

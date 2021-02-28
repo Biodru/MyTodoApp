@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A24E93D25EAA3C700AF86F4 /* TodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A24E93C25EAA3C700AF86F4 /* TodoView.swift */; };
 		5A4E2CC925E59BBE00BF44F9 /* MyTodoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4E2CC825E59BBE00BF44F9 /* MyTodoApp.swift */; };
 		5A4E2CCB25E59BBE00BF44F9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4E2CCA25E59BBE00BF44F9 /* ContentView.swift */; };
 		5A4E2CCD25E59BBF00BF44F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A4E2CCC25E59BBF00BF44F9 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A24E93C25EAA3C700AF86F4 /* TodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoView.swift; sourceTree = "<group>"; };
 		5A4E2CC525E59BBE00BF44F9 /* MyTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A4E2CC825E59BBE00BF44F9 /* MyTodoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTodoApp.swift; sourceTree = "<group>"; };
 		5A4E2CCA25E59BBE00BF44F9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				5A55279125E8110B000D6AA5 /* CategoryView.swift */,
+				5A24E93C25EAA3C700AF86F4 /* TodoView.swift */,
 			);
 			path = MainScrren;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				5A55279225E8110B000D6AA5 /* CategoryView.swift in Sources */,
 				5A823D0325E66B8B008593AD /* ColorPickerView.swift in Sources */,
 				5A4E2CCB25E59BBE00BF44F9 /* ContentView.swift in Sources */,
+				5A24E93D25EAA3C700AF86F4 /* TodoView.swift in Sources */,
 				5A823D0625E66B9E008593AD /* Constants.swift in Sources */,
 				5A823D1125E67A90008593AD /* AddCategorySheetView.swift in Sources */,
 				5A4E2CC925E59BBE00BF44F9 /* MyTodoApp.swift in Sources */,
