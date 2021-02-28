@@ -24,6 +24,17 @@ struct ContentView: View {
         }
         return .black
     }
+    
+    func compareDates(passedDate: Date) -> Bool {
+        let componentsPassed = passedDate.get(.day, .month, .year)
+        let componentsToday = Date().get(.day, .month, .year)
+        
+        if componentsPassed.day == componentsToday.day && componentsPassed.month == componentsToday.month && componentsPassed.year == componentsToday.year {
+            return true
+        } else {
+            return false
+        }
+    }
     //MARK: - Body
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -54,19 +65,35 @@ struct ContentView: View {
                     .padding(10)
                 })//:Scroll
                 Spacer()
-                //MARK: - Today
-                ScrollView(.vertical, showsIndicators: false, content: {
+                //MARK: - Done Today
+                SectionHeaderView(name: "Do zrobienia dzisiaj!")
                     VStack(spacing: 10) {
                         ForEach(todos, id: \.self) { todo in
-                            TodoView(done: todo.done, colorPassed: todo_category_color(cat_name: todo.category ?? ""), name: todo.name ?? "", date: Date())
-                                .onAppear(perform: {
-                                    print(todo.category)
-                                    print(categories[0].cat_name)
-                                })
+                            if todo.date != nil {
+                                if compareDates(passedDate: todo.date!) && !todo.done {
+                                    TodoView(done: todo.done, todo: todo, colorPassed: todo_category_color(cat_name: todo.category ?? ""), name: todo.name ?? "", date: todo.date!)
+                                        .environment(\.managedObjectContext, self.managedObjectContext)
+                                }
+                                
+                            }
                         }
-                    }
+                    }//:VStack
                     .padding(10)
-                })
+                Spacer()
+                SectionHeaderView(name: "Zrobione dzisiaj!")
+                    VStack(spacing: 10) {
+                        ForEach(todos, id: \.self) { todo in
+                            if todo.date != nil {
+                                if compareDates(passedDate: todo.date!) && todo.done {
+                                    TodoView(done: todo.done, todo: todo, colorPassed: todo_category_color(cat_name: todo.category ?? ""), name: todo.name ?? "", date: todo.date!)
+                                        .environment(\.managedObjectContext, self.managedObjectContext)
+                                }
+                                
+                            }
+                        }
+                    }//:VStack
+                    .padding(10)
+                Spacer()
           }//:VStack
             .padding(10)
             .sheet(item: $activeSheet, onDismiss: {
@@ -74,7 +101,7 @@ struct ContentView: View {
             }) { item in
                 switch item {
                 case .todo:
-                    AddTodoSheetView(valid: true, todoName: "Zrobić", done: false, categoryNames: [])
+                    AddTodoSheetView(valid: true, todoName: "", done: false, categoryNames: [])
                         .environment(\.managedObjectContext, self.managedObjectContext)
                 case .category:
                     AddCategorySheetView(categoryName: "", selectedIcon: icons[0], selectedColor: colors[0], valid: true)

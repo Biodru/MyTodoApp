@@ -143,15 +143,4 @@ struct AddTodoSheetView_Previews: PreviewProvider {
     }
 }
 
-struct SectionHeaderView: View {
-    var name: String
-    var body: some View {
-        HStack {
-            Text(name)
-                .font(.subheadline)
-                .foregroundColor(Color("accentMColor"))
-                .fontWeight(.light)
-            Spacer()
-        }
-    }
-}
+

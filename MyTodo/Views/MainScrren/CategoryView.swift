@@ -12,6 +12,7 @@ struct CategoryView: View {
     let name: String
     let icon: String
     let color: UIColor
+    @State var showSheet: Bool = false
     //MARK: - Body
     var body: some View {
         HStack(alignment: .center, spacing: 10) {
@@ -29,6 +30,10 @@ struct CategoryView: View {
         .padding(5)
         .background(Color("colorMLightPrimary").cornerRadius(12))
         .background(RoundedRectangle(cornerRadius: 12).stroke(Color("colorMDarkPrimary"), lineWidth: 1))
+        .onTapGesture {
+            self.showSheet.toggle()
+        }
+        
         
     }
 }

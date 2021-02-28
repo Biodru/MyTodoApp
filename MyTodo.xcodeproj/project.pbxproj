@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5A24E93D25EAA3C700AF86F4 /* TodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A24E93C25EAA3C700AF86F4 /* TodoView.swift */; };
+		5A4AFA2925EBE177002FBC47 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4AFA2825EBE177002FBC47 /* Extensions.swift */; };
+		5A4AFA2C25EBE64C002FBC47 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4AFA2B25EBE64C002FBC47 /* SectionHeaderView.swift */; };
 		5A4E2CC925E59BBE00BF44F9 /* MyTodoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4E2CC825E59BBE00BF44F9 /* MyTodoApp.swift */; };
 		5A4E2CCB25E59BBE00BF44F9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4E2CCA25E59BBE00BF44F9 /* ContentView.swift */; };
 		5A4E2CCD25E59BBF00BF44F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A4E2CCC25E59BBF00BF44F9 /* Assets.xcassets */; };
@@ -29,6 +31,8 @@
 
 /* Begin PBXFileReference section */
 		5A24E93C25EAA3C700AF86F4 /* TodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoView.swift; sourceTree = "<group>"; };
+		5A4AFA2825EBE177002FBC47 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		5A4AFA2B25EBE64C002FBC47 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		5A4E2CC525E59BBE00BF44F9 /* MyTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A4E2CC825E59BBE00BF44F9 /* MyTodoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTodoApp.swift; sourceTree = "<group>"; };
 		5A4E2CCA25E59BBE00BF44F9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 				5A55279025E810ED000D6AA5 /* MainScrren */,
 				5A823D0825E67160008593AD /* CategorySheet */,
 				5A4E2CCA25E59BBE00BF44F9 /* ContentView.swift */,
+				5A4AFA2B25EBE64C002FBC47 /* SectionHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -152,6 +157,7 @@
 			children = (
 				5A823D0525E66B9E008593AD /* Constants.swift */,
 				5A6A7A7825E915F5006F2369 /* SheetViewEnum.swift */,
+				5A4AFA2825EBE177002FBC47 /* Extensions.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -249,7 +255,9 @@
 				5A24E93D25EAA3C700AF86F4 /* TodoView.swift in Sources */,
 				5A823D0625E66B9E008593AD /* Constants.swift in Sources */,
 				5A823D1125E67A90008593AD /* AddCategorySheetView.swift in Sources */,
+				5A4AFA2C25EBE64C002FBC47 /* SectionHeaderView.swift in Sources */,
 				5A4E2CC925E59BBE00BF44F9 /* MyTodoApp.swift in Sources */,
+				5A4AFA2925EBE177002FBC47 /* Extensions.swift in Sources */,
 				5A4E2CD525E59BBF00BF44F9 /* MyTodo.xcdatamodeld in Sources */,
 				5A823D0E25E6769B008593AD /* TextFieldView.swift in Sources */,
 			);

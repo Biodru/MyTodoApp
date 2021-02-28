@@ -9,14 +9,22 @@ import SwiftUI
 
 struct TodoView: View {
     //MARK: - Properties
+    @Environment(\.managedObjectContext) var managedObjectContext
     @State var done: Bool
+    var todo: Todo
     var colorPassed: UIColor
     var name: String
-    var date: Date
+    var date: Date?
     var body: some View {
         HStack(spacing: 10) {
             Button(action: {
                 self.done.toggle()
+                self.todo.done = self.done
+                do {
+                    try self.managedObjectContext.save()
+                } catch {
+                    print(error)
+                }
             }, label: {
                 Circle()
                     .frame(width: 30, height: 30)
@@ -37,7 +45,7 @@ struct TodoView: View {
 
 struct TodoView_Previews: PreviewProvider {
     static var previews: some View {
-        TodoView(done: false, colorPassed: .red, name: "Test", date: Date())
+        TodoView(done: false, todo: Todo(), colorPassed: .red, name: "Test", date: Date())
             .previewLayout(.sizeThatFits)
     }
 }
