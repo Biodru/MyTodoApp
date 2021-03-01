@@ -10,21 +10,19 @@ import SwiftUI
 struct CategoryView: View {
     //MARK: - Properties
     //TODO: - Przerobić na Category_entity
-    let name: String
-    let icon: String
-    let color: UIColor
+    let category: Category_entity
     //MARK: - Body
     var body: some View {
         HStack(alignment: .center, spacing: 10) {
-            Image(systemName: icon)
+            Image(systemName: self.category.icon ?? "")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 30, height: 30, alignment: .center)
-                .foregroundColor(Color(color))
+                .foregroundColor(Color(self.category.color ?? .red))
             Spacer()
-            Text(name)
+            Text(self.category.cat_name ?? "Brak")
                 .font(.subheadline)
-                .foregroundColor(Color(color))
+                .foregroundColor(Color(self.category.color ?? .red))
         }//:HStack
         .frame(width: 140, height: 60)
         .padding(5)
@@ -38,7 +36,7 @@ struct CategoryView: View {
 //MARK: - Preview
 struct CategoryView_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryView(name: "Testowa", icon: "doc", color: .red)
+        CategoryView(category: Category_entity())
             .previewLayout(.sizeThatFits)
     }
 }

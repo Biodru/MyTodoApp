@@ -25,7 +25,7 @@ struct Category_Sheet_Todo: View {
                 VStack(spacing: 10) {
                     ForEach(todos, id: \.self) { todo in
                         if todo.category! == category?.cat_name! && !todo.done {
-                            TodoView(done: todo.done, todo: todo, colorPassed: category?.color ?? .red, name: todo.name ?? "", date: todo.date)
+                            TodoView(done: todo.done, todo: todo, colorPassed: category?.color ?? .red)
                                     .environment(\.managedObjectContext, self.managedObjectContext)
                             }
                             
@@ -37,7 +37,7 @@ struct Category_Sheet_Todo: View {
                 VStack(spacing: 10) {
                     ForEach(todos, id: \.self) { todo in
                         if todo.category! == category?.cat_name! && todo.done {
-                            TodoView(done: todo.done, todo: todo, colorPassed: category?.color ?? .red, name: todo.name ?? "", date: todo.date)
+                            TodoView(done: todo.done, todo: todo, colorPassed: category?.color ?? .red)
                                     .environment(\.managedObjectContext, self.managedObjectContext)
                             }
                             

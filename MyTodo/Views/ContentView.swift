@@ -59,7 +59,7 @@ struct ContentView: View {
                                     self.activeSheet = .categoryTodosList
                                     print("KlikPoszedł \(String(describing: selectedCategory?.cat_name!))")
                                 }) {
-                                    CategoryView(name: category.cat_name ?? "Brak", icon: category.icon ?? "", color: category.color ?? .red)
+                                    CategoryView(category: category)
                                 }
                                     
                             }//:Loop
@@ -75,7 +75,7 @@ struct ContentView: View {
                         ForEach(todos, id: \.self) { todo in
                             if todo.date != nil {
                                 if compareDates(passedDate: todo.date!) && !todo.done {
-                                    TodoView(done: todo.done, todo: todo, colorPassed: todo_category_color(cat_name: todo.category ?? ""), name: todo.name ?? "", date: todo.date!)
+                                    TodoView(done: todo.done, todo: todo, colorPassed: todo_category_color(cat_name: todo.category ?? ""))
                                         .environment(\.managedObjectContext, self.managedObjectContext)
                                 }
                                 
@@ -89,7 +89,7 @@ struct ContentView: View {
                         ForEach(todos, id: \.self) { todo in
                             if todo.date != nil {
                                 if compareDates(passedDate: todo.date!) && todo.done {
-                                    TodoView(done: todo.done, todo: todo, colorPassed: todo_category_color(cat_name: todo.category ?? ""), name: todo.name ?? "", date: todo.date!)
+                                    TodoView(done: todo.done, todo: todo, colorPassed: todo_category_color(cat_name: todo.category ?? ""))
                                         .environment(\.managedObjectContext, self.managedObjectContext)
                                 }
                                 
