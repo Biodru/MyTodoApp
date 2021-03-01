@@ -11,6 +11,7 @@ import CoreData
 struct ContentView: View {
     //MARK: - Properites
     @State var activeSheet: ActiveSheet?
+    @State var selectedCategory: Category_entity?
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(entity: Category_entity.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Category_entity.cat_name, ascending: true)]) var categories: FetchedResults<Category_entity>
     @FetchRequest(entity: Todo.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Todo.name, ascending: true)]) var todos: FetchedResults<Todo>
@@ -53,10 +54,13 @@ struct ContentView: View {
                                 .foregroundColor(Color("colorMDarkPrimary"))
                         })) {
                             ForEach(self.categories, id: \.self) { (category: Category_entity) in
-                                CategoryView(name: category.cat_name ?? "Brak", icon: category.icon ?? "", color: category.color ?? .red)
-                                    .onAppear(perform: {
-                                        //print(category.color)
-                                    })
+                                Button(action: {
+                                    self.selectedCategory = category
+                                    self.activeSheet = .categoryTodosList
+                                    print("KlikPoszedł \(String(describing: selectedCategory?.cat_name!))")
+                                }) {
+                                    CategoryView(name: category.cat_name ?? "Brak", icon: category.icon ?? "", color: category.color ?? .red)
+                                }
                                     
                             }//:Loop
                         }//:Section
@@ -106,11 +110,20 @@ struct ContentView: View {
                 case .category:
                     AddCategorySheetView(categoryName: "", selectedIcon: icons[0], selectedColor: colors[0], valid: true)
                         .environment(\.managedObjectContext, self.managedObjectContext)
+                case .categoryTodosList:
+                    Category_Sheet_Todo(category: selectedCategory)
+                        .environment(\.managedObjectContext, self.managedObjectContext)
                 }
                 
         }//:AddCategory
             
         }//:ScrollVertical
+        .edgesIgnoringSafeArea(.bottom)
+        .onAppear(perform: {
+            if !categories.isEmpty {
+                self.selectedCategory = categories[0]
+            }
+        })
         .overlay(ZStack {
             Button(action: {
                 activeSheet = .todo

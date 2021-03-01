@@ -131,8 +131,8 @@ struct AddTodoSheetView: View {
             }
         })
         .padding(10)
-        //.edgesIgnoringSafeArea(.all)
         .background(Color("backgroundMColor"))
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 

@@ -38,33 +38,17 @@ struct AddCategorySheetView: View {
                 Spacer()
                 Group {
                     //MARK: -Category Title
-                    HStack {
-                        Text("Nazwa kategorii")
-                            .font(.subheadline)
-                            .foregroundColor(Color("accentMColor"))
-                            .fontWeight(.light)
-                        Spacer()
-                    }
+                    AddCatSectionHeader(title: "Nazwa kategorii")
                     TextFieldView(categoryName: $categoryName, valid: $valid,hintText: "Podaj nazwę kategorii")
+                        .padding(.leading, 10)
+                        .padding(.trailing, 10)
                     Spacer()
                     //MARK: -Category Icon
-                    HStack {
-                        Text("Ikona")
-                            .font(.subheadline)
-                            .foregroundColor(Color("accentMColor"))
-                            .fontWeight(.light)
-                        Spacer()
-                    }
+                    AddCatSectionHeader(title: "Ikona")
                     IconPickerView(selectedIcon: $selectedIcon)
                     Spacer()
                     //MARK: -Category Color
-                    HStack {
-                        Text("Kolor")
-                            .font(.subheadline)
-                            .foregroundColor(Color("accentMColor"))
-                            .fontWeight(.light)
-                        Spacer()
-                    }
+                    AddCatSectionHeader(title: "Kolor")
                     ColorPickerView(selectedColor: $selectedColor)
                     Spacer()
                 }
@@ -84,18 +68,18 @@ struct AddCategorySheetView: View {
 
                     }
                                         
-//                    print(selectedIcon)
-//                    print(selectedColor.hashValue)
-//                    print(categoryName)
                 }, label: {
                     Text("Dodaj kategorię")
                 })
             }//:VStack
-            .padding(10)
+            .padding(.top, 10)
+            .padding(.bottom, 10)
+            .padding(.leading, 0)
+            .padding(.trailing, 0)
         })
-        .padding(10)
-        //.edgesIgnoringSafeArea(.all)
+        //.padding(10)
         .background(Color("backgroundMColor"))
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 

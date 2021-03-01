@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum ActiveSheet: Identifiable {
-    case category, todo
+    case category, todo, categoryTodosList
     
     var id: Int {
         hashValue
