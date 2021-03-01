@@ -13,8 +13,6 @@ struct TodoView: View {
     @State var done: Bool
     var todo: Todo
     var colorPassed: UIColor
-    var name: String
-    var date: Date?
     var body: some View {
         HStack(spacing: 10) {
             Button(action: {
@@ -29,13 +27,13 @@ struct TodoView: View {
                 Circle()
                     .frame(width: 30, height: 30)
                     .overlay(Circle().stroke(Color(colorPassed), lineWidth: 2)
-                                .background(done ? Circle().foregroundColor(Color(colorPassed)) : Circle().foregroundColor(Color("colorMDarkPrimary"))))
+                                .background(self.todo.done ? Circle().foregroundColor(Color(colorPassed)) : Circle().foregroundColor(Color("colorMDarkPrimary"))))
             })
             .padding(10)
-            Text(name)
+            Text(self.todo.name ?? "Brak")
                 .font(.subheadline)
                 .foregroundColor(Color(colorPassed))
-                .strikethrough(done, color: Color(colorPassed))
+                .strikethrough(self.todo.done, color: Color(colorPassed))
             Spacer()
         }
         .frame(height: 60)
@@ -45,7 +43,7 @@ struct TodoView: View {
 
 struct TodoView_Previews: PreviewProvider {
     static var previews: some View {
-        TodoView(done: false, todo: Todo(), colorPassed: .red, name: "Test", date: Date())
+        TodoView(done: false, todo: Todo(), colorPassed: .red)
             .previewLayout(.sizeThatFits)
     }
 }

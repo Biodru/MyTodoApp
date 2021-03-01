@@ -67,7 +67,7 @@ struct AddTodoSheetView: View {
                     if self.showCategoryPicker {
                         Picker("Wybierz kategorię", selection: $selectedCategory) {
                             ForEach(categoryNames, id: \.self) {category in
-                                Text(category ?? "Brak")
+                                Text(category)
                             }
                         }//:Picker
                         .foregroundColor(Color("colorMDarkPrimary"))
@@ -100,7 +100,7 @@ struct AddTodoSheetView: View {
                             newTodo.date = self.selectedDate
                         }
                         if showCategoryPicker {
-                            newTodo.category = self.selectedCategory ?? ""
+                            newTodo.category = self.selectedCategory
                         }
                         newTodo.name = self.todoName
                         newTodo.done = false
