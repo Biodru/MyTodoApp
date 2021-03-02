@@ -19,6 +19,7 @@
 		5A55278B25E80C18000D6AA5 /* Category_entity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A55278925E80C18000D6AA5 /* Category_entity+CoreDataClass.swift */; };
 		5A55278C25E80C18000D6AA5 /* Category_entity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A55278A25E80C18000D6AA5 /* Category_entity+CoreDataProperties.swift */; };
 		5A55279225E8110B000D6AA5 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A55279125E8110B000D6AA5 /* CategoryView.swift */; };
+		5A5BDF4E25EE59A70035C77B /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5BDF4D25EE59A70035C77B /* CalendarManager.swift */; };
 		5A695BB625EBFC5500F87FDD /* Category_Sheet_Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A695BB525EBFC5500F87FDD /* Category_Sheet_Todo.swift */; };
 		5A695BBA25EC073700F87FDD /* AddCatSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A695BB925EC073700F87FDD /* AddCatSectionHeader.swift */; };
 		5A6A7A7625E8F9B0006F2369 /* AddTodoSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6A7A7525E8F9B0006F2369 /* AddTodoSheetView.swift */; };
@@ -46,6 +47,7 @@
 		5A55278925E80C18000D6AA5 /* Category_entity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Category_entity+CoreDataClass.swift"; path = "MyTodo/Category_entity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5A55278A25E80C18000D6AA5 /* Category_entity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Category_entity+CoreDataProperties.swift"; path = "MyTodo/Category_entity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5A55279125E8110B000D6AA5 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		5A5BDF4D25EE59A70035C77B /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		5A695BB525EBFC5500F87FDD /* Category_Sheet_Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category_Sheet_Todo.swift; sourceTree = "<group>"; };
 		5A695BB925EC073700F87FDD /* AddCatSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCatSectionHeader.swift; sourceTree = "<group>"; };
 		5A6A7A7525E8F9B0006F2369 /* AddTodoSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoSheetView.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				5A823CFE25E66999008593AD /* Category.swift */,
+				5A5BDF4D25EE59A70035C77B /* CalendarManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				5A55278C25E80C18000D6AA5 /* Category_entity+CoreDataProperties.swift in Sources */,
 				5A6A7A7925E915F5006F2369 /* SheetViewEnum.swift in Sources */,
 				5A4E2CD225E59BBF00BF44F9 /* Persistence.swift in Sources */,
+				5A5BDF4E25EE59A70035C77B /* CalendarManager.swift in Sources */,
 				5A55278B25E80C18000D6AA5 /* Category_entity+CoreDataClass.swift in Sources */,
 				5A823D0A25E6717F008593AD /* IconPickerView.swift in Sources */,
 				5A6A7A7625E8F9B0006F2369 /* AddTodoSheetView.swift in Sources */,

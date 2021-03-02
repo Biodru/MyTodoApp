@@ -19,6 +19,7 @@ struct AddTodoSheetView: View {
     @State var done: Bool
     @State var categoryNames: [String]
     @State var selectedCategory: String = ""
+    let calendarManager: CalendarModel = CalendarModel()
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -98,6 +99,7 @@ struct AddTodoSheetView: View {
                         let newTodo = Todo(context: self.managedObjectContext)
                         if showCalendar {
                             newTodo.date = self.selectedDate
+                            calendarManager.check_permission(start_date: self.selectedDate, event_name: self.todoName)
                         }
                         if showCategoryPicker {
                             newTodo.category = self.selectedCategory
