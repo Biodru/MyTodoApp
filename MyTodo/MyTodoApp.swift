@@ -13,8 +13,9 @@ struct MyTodoApp: App {
 
     var body: some Scene {
         WindowGroup {
-            //ContentView()
-            AddCategorySheetView(categoryName: "", selectedIcon: icons[0], selectedColor: colors[0], valid: true)
+            ContentView()
+            //AddTodoSheetView(valid: true, todoName: "Zrobić", done: false, category: "Dodaj zadanie")
+            //AddCategorySheetView(categoryName: "", selectedIcon: icons[0], selectedColor: colors[0], valid: true)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

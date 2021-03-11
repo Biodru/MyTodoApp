@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Category {
-    let name: String
+    let cat_name: String
     let icon: String
     let color: Color
 }

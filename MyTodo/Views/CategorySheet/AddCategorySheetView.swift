@@ -9,17 +9,21 @@ import SwiftUI
 
 struct AddCategorySheetView: View {
     //MARK: -Properties
+    @Environment(\.managedObjectContext) var managedObjectContext
+    @Environment(\.presentationMode) var presentationMode
     @State var categoryName: String
     @State var selectedIcon: String
     @State var selectedColor: Color
     @State var valid: Bool = true
     
     //MARK: -Functions
-    func checkValid() {
+    func checkValid() -> Bool{
         if categoryName != "" {
             self.valid = true
+            return true
         } else {
             self.valid = false
+            return false
         }
     }
     //MARK: -Body
@@ -32,50 +36,50 @@ struct AddCategorySheetView: View {
                     .foregroundColor(Color("colorMDarkPrimary"))
                     .fontWeight(.heavy)
                 Spacer()
-                //MARK: -Category Title
-                HStack {
-                    Text("Nazwa kategorii")
-                        .font(.subheadline)
-                        .foregroundColor(Color("accentMColor"))
-                        .fontWeight(.light)
+                Group {
+                    //MARK: -Category Title
+                    AddCatSectionHeader(title: "Nazwa kategorii")
+                    TextFieldView(categoryName: $categoryName, valid: $valid,hintText: "Podaj nazwę kategorii")
+                        .padding(.leading, 10)
+                        .padding(.trailing, 10)
+                    Spacer()
+                    //MARK: -Category Icon
+                    AddCatSectionHeader(title: "Ikona")
+                    IconPickerView(selectedIcon: $selectedIcon)
+                    Spacer()
+                    //MARK: -Category Color
+                    AddCatSectionHeader(title: "Kolor")
+                    ColorPickerView(selectedColor: $selectedColor)
                     Spacer()
                 }
-                TextFieldView(categoryName: $categoryName, valid: $valid)
-                Spacer()
-                //MARK: -Category Icon
-                HStack {
-                    Text("Ikona")
-                        .font(.subheadline)
-                        .foregroundColor(Color("accentMColor"))
-                        .fontWeight(.light)
-                    Spacer()
-                }
-                IconPickerView(selectedIcon: $selectedIcon)
-                Spacer()
-                //MARK: -Category Color
-                HStack {
-                    Text("Kolor")
-                        .font(.subheadline)
-                        .foregroundColor(Color("accentMColor"))
-                        .fontWeight(.light)
-                    Spacer()
-                }
-                ColorPickerView(selectedColor: $selectedColor)
                 //MARK: -Button
-//                Button(action: {
-//                    checkValid()
-//                    print(selectedIcon)
-//                    print(selectedColor)
-//                    print(categoryName)
-//                }, label: {
-//                    Text("Dodaj kategorię")
-//                })
+                Button(action: {
+                    if checkValid() {
+                        let cat = Category_entity(context: self.managedObjectContext)
+                        cat.cat_name = self.categoryName
+                        cat.icon = self.selectedIcon
+                        cat.color = UIColor(self.selectedColor)
+                        self.presentationMode.wrappedValue.dismiss()
+                        do {
+                            try self.managedObjectContext.save()
+                        } catch {
+                            print(error)
+                        }
+
+                    }
+                                        
+                }, label: {
+                    Text("Dodaj kategorię")
+                })
             }//:VStack
-            .padding(10)
+            .padding(.top, 10)
+            .padding(.bottom, 10)
+            .padding(.leading, 0)
+            .padding(.trailing, 0)
         })
-        .padding(10)
-        //.edgesIgnoringSafeArea(.all)
+        //.padding(10)
         .background(Color("backgroundMColor"))
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 
